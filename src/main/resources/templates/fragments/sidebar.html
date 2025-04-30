@@ -1,0 +1,14 @@
+<div class="d-flex flex-column flex-shrink-0 p-3 sidebar" th:fragment="section" id="sidebar" style="width: 250px;"
+     xmlns:th="http://www.w3.org/1999/xhtml">
+    <ul class="nav nav-pills flex-column mb-auto">
+        <li>
+           <div id="dynamicMenus">
+
+           </div>
+        </li>
+    </ul>
+    <div class="menu-header" onclick="toggleSubmenu('settingsSubmenu')">
+        <i class="bi bi-gear" style="padding-left:10px"></i> <a onclick="loadSettingsModal()">Settings</a> <i
+            style="padding-right:10px"></i>
+    </div>
+</div>

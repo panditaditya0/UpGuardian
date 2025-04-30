@@ -1,0 +1,92 @@
+ .sidebar {
+            min-height: 100vh;
+            background-color: #1e1e1e;
+            padding-top: 1rem;
+            height: 100vh;
+            transition: width 0.3s ease;
+            overflow-x: hidden;
+        }
+
+        .sidebar a {
+            color: #ddd;
+            text-decoration: none;
+            display: block;
+            padding: 10px 15px;
+        }
+
+        .sidebar a:hover {
+            background-color: #333;
+            color: #fff;
+        }
+
+        .sidebar .submenu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .sidebar .submenu.show {
+            max-height: 300px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        .toggle-btn {
+            cursor: pointer;
+            color: #ccc;
+            padding: 10px 15px;
+        }
+
+        .status-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 8px;
+        }
+
+        .warning {
+            background-color: #ffc107;
+        }
+
+        .success {
+            background-color: #008000;
+        }
+
+        .failed {
+            background-color: #FF0000;
+        }
+
+        .menu-header {
+            margin-top: 10px;
+            color: #b0b0b0;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #404040;
+            border-top: 1px solid #404040;
+            border-left: 1px solid #404040;
+            border-right: 1px solid #404040;
+        }
+
+        .menu-header:hover {
+            background-color: #404040;
+            color: #ffffff;
+        }
+
+        .menu-header i {
+            transition: transform 0.3s ease;
+            color: #b0b0b0;
+        }
+
+        .menu-header:hover i {
+            color: #ffffff;
+        }
+
+        .menu-header[aria-expanded="true"] i {
+            transform: rotate(180deg);
+        }

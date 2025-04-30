@@ -1,0 +1,29 @@
+<div class="main-content-wrapper" id="mainContentWrapper"  th:fragment="dashboard-sections" xmlns:th="http://www.w3.org/1999/xhtml">
+  <div id="main-content-container">
+    <div class="main-content">
+      <div class="container-fluid py-4">
+          <div class="card">
+              <div class="card-header" style="display: flex;">
+                  <h5 class="mb-0" style="min-width:80%"><i class="bi bi-exclamation-octagon me-2"></i>Alerts</h5>
+              </div>
+              <div class="card-body p-0" id="alert-cards">
+              </div>
+          </div>
+          <div class="dashboard-overview">
+          <div class="row g-3" id="dashboard-status-card">
+          </div>
+        </div>
+          <div class="card">
+              <div class="card-header" style="display: flex;">
+                  <h5 class="mb-0" style="min-width:80%"><i class="bi bi-heart-pulse me-2"></i>Heartbeat Status</h5>
+                  <select id="heartbeatJobTypeSelect" class="form-select select-option" aria-label="Default select example">
+                      <option selected>Recent</option>
+                  </select>
+              </div>
+              <div class="card-body p-0" id="heartbeatCard">
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
