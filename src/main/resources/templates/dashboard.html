@@ -19,6 +19,17 @@
 <body>
     <div class="overlay" id="overlay" style="margin-left: 10px"></div>
     <div th:insert="fragments/header :: section"></div>
+
+    <div class="container-fluid">
+        <div class="row"  style="margin-right: 18px; margin-top: 6px;">
+            <div class="col text-end">
+                <button class="btn custom-alert-btn" style="margin-top: 60px;">
+                    <i class="bi bi-plus-circle me-1"></i> New Alert
+                </button>
+            </div>
+        </div>
+    </div>
+
     <div th:insert="fragments/home-dashboard :: dashboard-sections"></div>
     <script>
     populateAlerts();
