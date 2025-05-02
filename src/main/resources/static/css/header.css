@@ -1,0 +1,135 @@
+ :root {
+            --bg-color: #ffffff;
+            --text-color: #000000;
+            --header-bg: #FBFBFB    ;
+            --hamburger-color: #000;
+
+            --icon-color: #000;
+            /* --dark-bg: #13171a;
+            --darker-bg: #050608; */
+            --card-bg: #0f1215;
+            --text-muted: #8b949e;
+            --border-color: #1a1d20;
+            --primary-color: #0d6efd;
+            --primary-hover: #0b5ed7;
+            --sidebar-width: 260px;
+            --sidebar-collapsed-width: 70px;
+            --menu-item-height: 36px;
+        }
+
+        body.dark-mode {
+            --icon-color: #fff;
+            --bg-color: #13171a;
+            --text-color: #ffffff;
+            --header-bg: #050004;
+            --hamburger-color: #fff;
+        }
+
+        .commonFont {
+            font-size: 15px;
+            font-family: "Roboto", sans-serif;
+            font-optical-sizing: auto;
+            font-style: normal;
+        }
+
+        .breadcrumb {
+            color: #555;
+            margin: 20px;
+        }
+
+        .breadcrumb span {
+            margin-left: 5px;
+            color: var(--text-muted);
+        }
+
+        .breadcrumb a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .refresh-icon {
+            color: var(--icon-color);
+            margin-left: auto;
+            padding-right: 10px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .refresh-icon.spin {
+        animation: spin 0.5s ease-in-out;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+            }
+
+        .form-check-input:checked {
+            background-color: #000 !important;
+            border-color: #000 !important;
+        }
+
+        header {
+            background-color: var(--header-bg);
+            height: 40px;
+            display: flex;
+            align-items: center;
+            padding: 0 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1001;
+        }
+
+        .hamburger {
+            width: 24px;
+            height: 24px;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .hamburger span {
+            position: absolute;
+            height: 3px;
+            width: 100%;
+            background-color: var(--hamburger-color);
+            border-radius: 3px;
+            left: 0;
+            transition: 0.3s ease;
+        }
+
+        .hamburger span:nth-child(1) {
+            top: 0;
+        }
+
+        .hamburger span:nth-child(2) {
+            top: 8px;
+        }
+
+        .hamburger span:nth-child(3) {
+            top: 16px;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg);
+            top: 8px;
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg);
+            top: 8px;
+        }
+
+        .theme-toggle {
+            cursor: pointer;
+        }

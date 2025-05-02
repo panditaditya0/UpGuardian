@@ -22,6 +22,5 @@ public interface JobHandler {
     DashboardCardDto fetchAllJobsTitles();
     Object fetchJobsByStatus(JobStatus status);
     List<AlertCardItemDto> fetchJobsByIncicentLevel(IncidentLevel incedentLevel);
-
     List<HeartbeatCardItemDto> fetchAllHeartBeats(PageRequest count);
 }

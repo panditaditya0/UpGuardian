@@ -1,0 +1,25 @@
+  .status-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+
+        .status-dot.up {
+            background-color: #28a745;
+        }
+
+        .status-dot.warning {
+            background-color: #ffc107;
+        }
+
+        .status-dot.down {
+            background-color: #dc3545;
+        }
+
+        /* Badges */
+                .badge {
+                    padding: 5px 10px;
+                    border-radius: 4px;
+                }

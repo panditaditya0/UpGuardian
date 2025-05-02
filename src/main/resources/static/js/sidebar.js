@@ -1,62 +1,42 @@
-populateMenus();
+        const hamburger = document.getElementById('hamburger');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
 
-async function toggleSubmenu(id) {
-    const el = document.getElementById(id);
-    el.classList.toggle("show");
-}
-//
-//
-//async function populateMenus() {
-//    const url = "http://localhost:8081/analytics/jobType";
-//    try {
-//        const response = await fetch(url);
-//         if (!response.ok) {
-//             throw new Error(`Response status: ${response.status}`);
-//         }
-//
-//          let menus = "";
-//          const json = await response.json();
-//          console.log("helllo" + json);
-//           json.data.forEach(element => {
-//                   menus += `
-//                     <div class="menu-header" onclick="toggleSubmenu('settingsSubmenu')">
-//                         <i class="bi bi-code-square" style="padding-left:10px"></i> <a href="/settings/users">`+element+`</a> <i class="bi bi-chevron-down" style="padding-right:10px"></i>
-//                     </div>
-//                     <ul class="submenu list-unstyled" id="settingsSubmenu"></ul>
-//                     `;
-//          });
-//            console.log("dynamicMenus");
-//            document.getElementById("dynamicMenus").innerHTML = menus;
-//
-////
-////
-////        const data = await response.json();
-////        let listOfMenus = data['data'];
-////        let menus = "";
-////
-////        listOfMenus.forEach(element => {
-////            menus += `
-////        <div class="menu-header" onclick="toggleSubmenu('settingsSubmenu')">
-////            <i class="bi bi-code-square" style="padding-left:10px"></i> <a href="/settings/users">Api
-////                Services</a> <i class="bi bi-chevron-down" style="padding-right:10px"></i>
-////        </div>
-////        <ul class="submenu list-unstyled" id="settingsSubmenu">
-////        `;
-////            let subMenus = element['subMenus'];
-////            subMenus.forEach(subMenu => {
-////                let indicator = subMenu.status == "OK" ? "success" : "failed"
-////                menus+= `
-////                <div class="menu-header">
-////                    <a href="${subMenu.route}"><i class="bi status-indicator ${indicator}"></i>${subMenu.title}</a>
-////                </div>
-////                `;
-////            });
-////            menus += `</ul>`;
-////        });
-////        console.log(menus);
-////        document.getElementById("dynamicMenus").innerHTML = menus;
-////        console.log(listOfMenus);
-//    } catch (error) {
-//        console.error(error.message);
-//    }
-//}
+        hamburger.addEventListener('click', () => {
+            sidebar.classList.toggle('open');
+            overlay.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+
+        overlay.addEventListener('click', () => {
+            sidebar.classList.remove('open');
+            overlay.classList.remove('active');
+            hamburger.classList.remove('active');
+        });
+
+
+        populateSidebar();
+
+        async function populateSidebar() {
+                    const response = await fetch("http://localhost:8081/analytics/card-status");
+                    try {
+                        if (!response.ok) {
+                            throw new Error(`Response status: ${response.status}`);
+                        }
+                        const json = await response.json();
+                        let data = json.data;
+                        let outerDashboardCardHtml = '';
+                        json.data.forEach(element => {
+
+                            let menus = `
+                             <div class="menu-header" onclick="toggleSubmenu('settingsSubmenu')">
+                                 <i class="`+ element.jobIcon + `" style="padding-left:10px"></i> <a href="/settings/users">` + element.jobTypeName + `</a> <i class="bi bi-chevron-down" style="padding-right:10px"></i>
+                             </div>
+                             <ul class="submenu list-unstyled" id="settingsSubmenu">
+                             `;
+                            document.getElementById("dynamicMenus").innerHTML += menus;
+                        });
+                    } catch (error) {
+                        console.error(error.message);
+                    }
+                }

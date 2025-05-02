@@ -1,5 +1,18 @@
   body {
-            background-color: #121212;
-            color: #fff;
-        }
+      background-color: #121212;
+      color: #fff;
+  }
 
+  :root {
+      --dark-bg: #13171a;
+      --darker-bg: #050608;
+      --card-bg: #0f1215;
+      --text-color: #e9ecef;
+      --text-muted: #8b949e;
+      --border-color: #1a1d20;
+      --primary-color: #0d6efd;
+      --primary-hover: #0b5ed7;
+      --sidebar-width: 260px;
+      --sidebar-collapsed-width: 70px;
+      --menu-item-height: 36px;
+  }

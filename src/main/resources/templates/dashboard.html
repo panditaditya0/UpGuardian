@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UpGuardian-Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <link rel="stylesheet" th:href="@{/css/commonFont.css}">
+    <link rel="stylesheet" th:href="@{/css/statusDot.css}">
+    <link rel="stylesheet" th:href="@{/css/home-dashboard.css}">
+</head>
+<body>
+    <div class="overlay" id="overlay" style="margin-left: 10px"></div>
+    <div th:insert="fragments/header :: section"></div>
+    <div th:insert="fragments/home-dashboard :: dashboard-sections"></div>
+    <script>
+    populateAlerts();
+     populateDashboardCards();
+     populateHeartBeats();
+
+     async function populateAlerts() {
+         const response = await fetch("http://localhost:8081/analytics/alerts");
+         try {
+             if (!response.ok) {
+                 throw new Error(`Response status: ${response.status}`);
+             }
+
+             const json = await response.json();
+             let data = json.data;
+             let alertCard = "";
+             data.forEach(element => {
+                 alertCard += `
+              <div class="heartbeat-item">
+                   <span class="`+ element.dotStatus + ` me-3"></span>
+                   <div class="heartbeat-info">
+                       <div>`+ element.jobTitle + `</div>
+                       <div class="heartbeat-time">Last check: `+ element.lastCheckedDate + `</div>
+                   </div>
+                   <span class="`+ element.batchColor + `">` + element.batchString + `</span>
+               </div>
+         `;
+             });
+             console.log(alertCard);
+             document.getElementById("alert-cards").innerHTML += alertCard;
+         } catch (error) {
+             console.error(error.message);
+         }
+     }
+     async function populateDashboardCards() {
+         const response = await fetch("http://localhost:8081/analytics/card-status");
+         try {
+             if (!response.ok) {
+                 throw new Error(`Response status: ${response.status}`);
+             }
+             const json = await response.json();
+             let data = json.data;
+             let outerDashboardCardHtml = '';
+             json.data.forEach(element => {
+                 let dashboardCardHtml = `
+                 <div class="col-md-4">
+                     <div class="overview-card">
+                         <div class="overview-header">
+                             <i class="`+ element.jobIcon + `"></i>
+                             <h5 class="mb-0">`+ element.jobTypeName + `</h5>
+                         </div>`;
+
+                 element.jobsStatus.forEach(inner_element => {
+                    let cardBgColor =  inner_element.statusDot.includes("down") ? "bg-danger" : "bg-success";
+                     dashboardCardHtml += `
+                              <div class="overview-item">
+                             <div class="overview-status">
+                                 <span class="`+ inner_element.statusDot + `"></span>
+                                 <span>`+ inner_element.jobTitle + `</span>
+                             </div>
+                             <span class="overview-count `+cardBgColor+`" >`+ inner_element.jobStatus + `</span>
+                         </div>
+                 `;
+                 });
+
+                 dashboardCardHtml += `</div>
+                     </div>`;
+
+                 let menus = `
+                  <div class="menu-header" onclick="toggleSubmenu('settingsSubmenu')">
+                      <i class="`+ element.jobIcon + `" style="padding-left:10px"></i> <a href="/settings/users">` + element.jobTypeName + `</a> <i class="bi bi-chevron-down" style="padding-right:10px"></i>
+                  </div>
+                  <ul class="submenu list-unstyled" id="settingsSubmenu">
+                  `;
+<!--                 document.getElementById("dynamicMenus").innerHTML += menus;-->
+
+                 outerDashboardCardHtml += dashboardCardHtml;
+             });
+             console.log(outerDashboardCardHtml)
+             document.getElementById("dashboard-status-card").innerHTML = outerDashboardCardHtml;
+
+         } catch (error) {
+             console.error(error.message);
+         }
+     }
+     async function populateHeartBeats() {
+         const response = await fetch("http://localhost:8081/analytics/heartbeat/4");
+         try {
+             if (!response.ok) {
+                 throw new Error(`Response status: ${response.status}`);
+             }
+
+             const json = await response.json();
+             let data = json.data;
+             let alertCard = "";
+             data.forEach(element => {
+                 alertCard += `
+              <div class="heartbeat-item">
+                   <span class="`+ element.dotStatus + ` me-3"></span>
+                   <div class="heartbeat-info">
+                       <div>`+ element.jobTitle + `</div>
+                       <div class="heartbeat-time">Last check: `+ element.lastCheckedDate + `</div>
+                   </div>
+                   <span class="`+ element.batchColor + `">` + element.batchString + `</span>
+               </div>
+         `;
+             });
+             console.log(alertCard);
+             document.getElementById("heartbeatCard").innerHTML += alertCard;
+         } catch (error) {
+             console.error(error.message);
+         }
+     }
+    </script>
+    <script th:src="@{/js/header.js}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>

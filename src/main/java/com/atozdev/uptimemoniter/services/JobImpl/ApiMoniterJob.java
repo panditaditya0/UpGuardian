@@ -179,9 +179,9 @@ public class ApiMoniterJob implements Job, JobHandler {
         HttpStatus status = apiTrigger.getJobStatusCode();
         alertCardItemDto.setLastCheckedDate(apiTrigger.getTriggredAt().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
         alertCardItemDto.setBatchString(status.value() + " " + status.getReasonPhrase());
-        alertCardItemDto.setBatchColor(status.is2xxSuccessful()? "badge bg-success" : "badge bg-danger");
+        alertCardItemDto.setBatchColor(status.is2xxSuccessful()? "overview-count bg-success" : "overview-count bg-danger");
         alertCardItemDto.setJobTitle(apiTrigger.getJobTitle());
-        alertCardItemDto.setDotStatus(status.is2xxSuccessful()? "status-dot down" : "status-dot down");
+        alertCardItemDto.setDotStatus(status.is2xxSuccessful()? "status-dot up" : "status-dot down");
         return alertCardItemDto;
     }
 
@@ -191,8 +191,8 @@ public class ApiMoniterJob implements Job, JobHandler {
         heartbeatCardItemDto.setLastCheckedDate(apiTrigger.getTriggredAt().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
         HttpStatus status = apiTrigger.getJobStatusCode();
         heartbeatCardItemDto.setBatchString(status.value() + " " + status.getReasonPhrase());
-        heartbeatCardItemDto.setDotStatus(status.is2xxSuccessful()? "status-dot down" : "status-dot down");
-        heartbeatCardItemDto.setBatchColor(status.is2xxSuccessful()? "badge bg-success" : "badge bg-danger");
+        heartbeatCardItemDto.setDotStatus(status.is2xxSuccessful()? "status-dot up" : "status-dot down");
+        heartbeatCardItemDto.setBatchColor(status.is2xxSuccessful()? "overview-count bg-success" : "overview-count bg-danger");
         return heartbeatCardItemDto;
     }
 }

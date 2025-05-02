@@ -2,7 +2,6 @@ package com.atozdev.uptimemoniter.controller;
 
 import com.atozdev.uptimemoniter.dtos.ResponseDto;
 import com.atozdev.uptimemoniter.entity.Jobs.MainJobs;
-import com.atozdev.uptimemoniter.enums.IncidentLevel;
 import com.atozdev.uptimemoniter.enums.JobType;
 import com.atozdev.uptimemoniter.repository.jobRepositoryy.MainJobRepo;
 import com.atozdev.uptimemoniter.services.AnalyticsService;

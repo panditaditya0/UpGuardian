@@ -1,6 +1,6 @@
  .sidebar {
             min-height: 100vh;
-            background-color: #1e1e1e;
+            background-color: var(--bg-color);
             padding-top: 1rem;
             height: 100vh;
             transition: width 0.3s ease;
@@ -15,7 +15,7 @@
         }
 
         .sidebar a:hover {
-            background-color: #333;
+            background-color: var(--bg-color);
             color: #fff;
         }
 
@@ -90,3 +90,96 @@
         .menu-header[aria-expanded="true"] i {
             transform: rotate(180deg);
         }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -400px;
+            width: 400px;
+            height: calc(100% - 50px);
+            background-color: var(--darker-bg);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            /* this pushes footer to bottom */
+            padding: 1rem;
+            transition: left 0.3s ease;
+            z-index: 1000;
+            margin-top: 30px;
+        }
+
+        .sidebar.open {
+            left: 0;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding-right: 32px;
+        }
+
+        .sidebar li {
+            margin: 1rem 0;
+        }
+
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: color 0.2s ease;
+        }
+
+        .sidebar a:hover {
+            color: #ffca28;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 40px;
+            left: 0;
+            width: 100%;
+            height: calc(100% - 50px);
+            backdrop-filter: blur(5px);
+            background-color: rgba(0, 0, 0, 0.4);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .content {
+            padding: 70px 2rem 2rem;
+            /* padding top to accommodate header */
+        }
+
+        .menu-footer {
+            padding: 1rem 0;
+            border-top: 1px solid #333;
+            cursor: pointer;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .menu-footer a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .menu-footer:hover {
+            background-color: #2a2a2a;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+
+         .overview-header i {
+                    margin-right: 10px;
+                    font-size: 1.2rem;
+                }
