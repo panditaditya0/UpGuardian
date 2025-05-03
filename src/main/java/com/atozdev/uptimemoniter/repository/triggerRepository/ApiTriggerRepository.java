@@ -22,8 +22,17 @@ public interface ApiTriggerRepository extends JpaRepository<ApiTrigger, Long> {
     @Query("SELECT j FROM ApiTrigger j WHERE j.jobStatus = :status")
     List<ApiTrigger> findAllByJobStatusNot(@Param("status") JobStatus status);
 
-    @Query("SELECT j FROM ApiTrigger j WHERE j.incidentLevel = :incedentLevel")
-    List<ApiTrigger> findAllByIncedent(IncidentLevel incedentLevel);
+    @Query("SELECT yt FROM ApiTrigger yt " +
+            "WHERE yt.incidentLevel = :incidentLevel " +
+            "AND yt.triggredAt = (" +
+            "  SELECT MAX(sub.triggredAt) " +
+            "  FROM ApiTrigger sub " +
+            "  WHERE sub.jobTitle = yt.jobTitle " +
+            "  AND sub.incidentLevel = :incidentLevel" +
+            ")")
+    List<ApiTrigger> findAllByIncidentLevel(@Param("incidentLevel") IncidentLevel incidentLevel);
+
+
 
     List<ApiTrigger> findAllByOrderByTriggredAtDesc(PageRequest pageRequest);
 }

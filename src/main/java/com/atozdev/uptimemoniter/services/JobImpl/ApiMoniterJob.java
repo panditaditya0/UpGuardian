@@ -113,16 +113,20 @@ public class ApiMoniterJob implements Job, JobHandler {
             jobStatus.setJobId(job.getId());
             jobStatus.setJobTitle(job.getJobTitle());
             ApiTrigger trigger = apiTriggerRepository.findTopByJobTitleOrderByTriggredAtDesc(job.getJobTitle());
-            HttpStatus triggedJobStatus = trigger.getJobStatusCode();
-            jobStatus.setJobStatus(triggedJobStatus.value() + " " + triggedJobStatus.getReasonPhrase());
-            if (triggedJobStatus.value() < 300){
-                jobStatus.setStatusDot("status-dot up");
-            } else if (triggedJobStatus.value() < 500){
-                jobStatus.setStatusDot("status-dot down");
-            } else{
-                jobStatus.setStatusDot("status-dot down");
+            if(null != trigger) {
+
+
+                HttpStatus triggedJobStatus = trigger.getJobStatusCode();
+                jobStatus.setJobStatus(triggedJobStatus.value() + " " + triggedJobStatus.getReasonPhrase());
+                if (triggedJobStatus.value() < 300) {
+                    jobStatus.setStatusDot("status-dot up");
+                } else if (triggedJobStatus.value() < 500) {
+                    jobStatus.setStatusDot("status-dot down");
+                } else {
+                    jobStatus.setStatusDot("status-dot down");
+                }
+                allJobStatus.add(jobStatus);
             }
-            allJobStatus.add(jobStatus);
         });
         return new DashboardCardDto(
                 this.getJobType().getJobName(),
@@ -138,7 +142,7 @@ public class ApiMoniterJob implements Job, JobHandler {
 
     @Override
     public List<AlertCardItemDto> fetchJobsByIncicentLevel(IncidentLevel incedentLevel) {
-        List<ApiTrigger> apiTrigger =  apiTriggerRepository.findAllByIncedent(incedentLevel);
+        List<ApiTrigger> apiTrigger =  apiTriggerRepository.findAllByIncidentLevel(incedentLevel);
         List<AlertCardItemDto> alertCardItemDtos = new ArrayList<>();
         apiTrigger.stream().forEach(x -> {
             alertCardItemDtos.add(convertApiTriggerToAlertCardItem(x));

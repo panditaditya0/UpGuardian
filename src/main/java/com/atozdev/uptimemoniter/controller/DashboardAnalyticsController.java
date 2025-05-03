@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -25,15 +27,18 @@ public class DashboardAnalyticsController {
     }
 
     @GetMapping("/alerts")
-    public ResponseEntity<ResponseDto> fetchAlerts(){
+    public ResponseEntity<ResponseDto> fetchAlerts() {
         ArrayList<AlertCardItemDto> alertCardItemDtos = new ArrayList<>();
         Arrays.stream(JobType.values()).forEach(x -> {
             alertCardItemDtos.addAll(analyticsService.fetchJobsByIncident(x, IncidentLevel.SEVERE));
         });
-        alertCardItemDtos.stream()
-                .sorted(Comparator.comparing(AlertCardItemDto::getLastCheckedDate).reversed())
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+
+        List<AlertCardItemDto> sortedList = alertCardItemDtos.stream()
+                .sorted(Comparator.comparing(dto -> LocalDateTime.parse(dto.getLastCheckedDate(), formatter)))
                 .collect(Collectors.toList());
-        return new ResponseEntity<>(new ResponseDto(true, alertCardItemDtos, ""), HttpStatus.OK);
+        Collections.reverse(sortedList);
+        return new ResponseEntity<>(new ResponseDto(true, sortedList, ""), HttpStatus.OK);
     }
 
     @GetMapping("/card-status")

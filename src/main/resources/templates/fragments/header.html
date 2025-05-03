@@ -8,7 +8,15 @@
         <img id= "headerLogo" src="/images/litemode_logo.png" alt="Logo" style="margin-left: 10px;padding: 9.5px;height: 50px;">
     </div>
     <div class="breadcrumb commonFont">
-        <a href="/">Home</a> <span>&gt;</span> <span>Dashboard</span>
+        <th:block th:each="crumb, iterStat : ${breadcrumbs}">
+            <th:block th:if="${!iterStat.last}">
+                <a th:href="${crumb.url}" th:text="${crumb.label}"></a>
+                <span> &gt; </span>
+            </th:block>
+            <th:block th:if="${iterStat.last}">
+                <span th:text="${crumb.label}"></span>
+            </th:block>
+        </th:block>
     </div>
 
     <div  class="refresh-icon"  onclick="location.reload();">

@@ -64,7 +64,7 @@ public class JobService {
                 commonJobDto.setJobType(job.getJobType());
                 commonJobDto.setJobTitle(job.getJobTitle());
                 commonJobDto.setCronExpression(job.getCronExpression());
-                this.scheduleAJob(commonJobDto);
+//                this.scheduleAJob(commonJobDto);
             } catch (Exception ex) {
             }
         }
