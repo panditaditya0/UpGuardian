@@ -1,130 +1,122 @@
 # 🤖 UpGuardian: AI-First Uptime & API Monitoring
 
-# 🛡️ UpGuardian
-
-> A real-time AI-augmented monitoring system built with Spring Boot to ensure your APIs, services, and infrastructure are always up, secure, and responsive.
+> A real-time **AI-augmented** monitoring system built with Spring Boot to ensure your APIs, services, infrastructure, and billing operations are always **available**, **secure**, and **predictable**.
 
 ---
 
 ## 🚀 Overview
 
-**UpGuardian** is a powerful uptime and performance monitoring tool for modern systems. It combines **real-time monitoring** with **AI-based predictive failure detection**, giving you early alerts and actionable insights for:
+**UpGuardian** is a comprehensive monitoring and alerting solution designed for modern, distributed architectures. It combines **real-time checks** with **AI-powered predictive insights**, helping you take **action before failure**.
 
-- ✅ **REST API Health & Response Times**
-- 📡 **Server Uptime via Heartbeats**
-- 🔐 **SSL Certificate Expiry Tracking**
-- 🧾 **Invoice Payment Alerts**
-- 🐳 **Dockerized Microservices Monitoring**
-- 🤖 **AI-Powered Failure Prediction**
-- ⏱️ **Polls Automatically Every defined time**
+Whether you're managing APIs, containers, certificates, queues, or invoices — UpGuardian is your all-in-one solution for intelligent observability.
 
 ---
 
-## 📊 Key Features
+## ✨ Features
 
-### 🔍 API Monitoring
-- Tracks HTTP status, latency, and response body
-- Supports all HTTP methods
-- Automatically retries failed requests
-- Summarized in an intuitive dashboard with filters
+- ✅ **REST API Health & Response Time Tracking**
+- 📡 **Server Uptime via Heartbeats**
+- 🔐 **SSL Certificate Expiry Monitoring**
+- 🧾 **Invoice Payment Alerting**
+- 🐳 **Docker Microservice Monitoring**
+- 📉 **Database Query & Connection Health Checks**
+- 📈 **System Resource Usage Alerts (CPU, RAM, Disk)**
+- 📤 **Third-party API Availability Monitoring**
+- 🌐 **DNS Resolution & Domain Monitoring**
+- 🔁 **Queue (Kafka, RabbitMQ) Throughput & Lag Tracking**
+- 🤖 **AI-Driven Failure Prediction & Anomaly Detection**
+- ⏱️ **Scheduled Monitoring (every minute or configurable)**
 
-### 🖥️ Server Heartbeat (Uptime)
-- Pings services and logs real-time availability
-- Displays uptime %, last seen, and failure streaks
-- Notifies when service is unreachable for configured intervals
+---
 
-### 🔒 SSL Certificate Monitoring
-- Checks SSL expiration dates for domains
-- Sends alerts for certificates nearing expiry
-- Prevents potential downtime due to invalid certificates
+## 🧠 AI-Powered Monitoring
 
-### 🧠 AI-Powered Failure Prediction
-- Learns from historical trends and errors
-- Predicts API/service failures using lightweight ML models
-- Flags anomalies even before errors occur
+### 🔮 Predictive Failure Detection
+- ML-based models analyze uptime trends to forecast API or service outages before they happen.
+
+### 📊 Anomaly Detection
+- Detect spikes or unusual behavior in:
+  - API latency
+  - System metrics
+  - Heartbeat delays
+  - SSL changes
+
+### 🧠 Smart Alerting
+- Reduces noise and learns from user inputs.
+- Adaptive thresholds based on past data.
+
+### 📉 Downtime Forecasting
+- Projects potential outages based on performance history.
+
+### 💡 Root Cause Suggestions *(experimental)*
+- Suggests likely causes for detected failures by analyzing correlated metrics.
+
+---
+
+## 📊 Monitoring Modules
+
+### 🔍 REST API Monitoring
+- Health checks for endpoints with configurable HTTP method, payloads, and headers.
+- Logs status codes, response time, and body (optional).
+- Dashboard with filters and charts.
+
+### 🖥️ Server Uptime (Heartbeats)
+- Tracks services with pings or custom endpoints.
+- Displays uptime %, downtime streaks, and last seen.
+
+### 🔒 SSL Certificate Checker
+- Monitors domains for certificate expiry.
+- Alerts you before expiration to prevent HTTPS failures.
 
 ### 🧾 Invoice Payment Alerts
-- Tracks recurring invoice due dates and payment statuses
-- Sends reminders or alerts when payment is pending
-- Integrates with billing APIs or internal tools
+- Monitors invoice due dates and payment statuses.
+- Can sync with billing APIs or internal systems.
 
-### 🐳 Dockerized Service Monitoring
-- Monitors container health via Docker APIs
-- Detects restart loops, failures, and resource usage spikes
-- Visualizes service health on dashboard
+### 🐳 Docker Microservices
+- Uses Docker API to track:
+  - Container restarts
+  - Healthcheck failures
+  - Resource spikes (CPU/memory)
 
----
+### 🧩 Database Monitoring
+- Tracks query latency, connection health, and blocking queries.
+- Supports JDBC-compatible databases.
 
-## 🖥️ Live Dashboard
+### 🌐 DNS & Outbound API Monitoring
+- Verifies DNS resolution and third-party API availability.
+- Monitors services your app depends on.
 
-> Clean. Responsive. Informative.
-
-- 📈 Uptime trend & API latency charts (via Chart.js)
-- 🌙 Dark mode toggle
-- ✅ Toast notifications for quick insights
-- 📂 Breadcrumb navigation: `Home > Dashboard > [Service]`
-- 📅 Date filters for viewing historical data
-
----
-
-## ⚙️ Tech Stack
-
-| Layer      | Technology                  |
-|------------|-----------------------------|
-| Backend    | Spring Boot, Java 17        |
-| Frontend   | Thymeleaf, Bootstrap 5, JS  |
-| Charts     | Chart.js                    |
-| Scheduler  | Spring Task Scheduler       |
-| DB         | PostgreSQL / MySQL / H2     |
-| Container  | Docker (for service monitors) |
-| AI Engine  | Embedded ML via Java/Python (Pluggable) |
+### 🔁 Queue Monitoring
+- Kafka, RabbitMQ support.
+- Detects lag, high throughput, or stuck queues.
 
 ---
 
-## 🧠 Why UpGuardian?
+## 📊 Dashboard Features
 
-**Downtime costs money.**  
-UpGuardian doesn’t just report incidents — it helps **prevent them**.
-
-- 🚨 **AI-Powered Failure Prediction**  
-  Learns from past downtimes and usage trends to detect anomalies *before they turn into failures*.
-
-- 📡 **Real-Time Monitoring (Every 1 min)**  
-  Whether it's a broken API, an unreachable Docker container, or a soon-to-expire certificate — UpGuardian has your back.
-
-- 📊 **Clean Analytics Dashboard**  
-  Visualizes health trends, average latencies, error spikes, and more — with built-in dark mode.
+- 📈 Uptime and response charts (Chart.js)
+- 🌓 **Dark mode** toggle
+- 🔔 Real-time toast notifications
+- 🗂️ Group by job, domain, type, or tags
+- 🧠 AI alerts highlighted with confidence score
+- 📅 Custom date range filtering
 
 ---
 
-## ⚡ Features at a Glance
+## 🛠️ Tech Stack
 
-| Feature                             | Description                                                                 |
-|-------------------------------------|-----------------------------------------------------------------------------|
-| 🤖 **AI-Based Failure Prediction**   | Learns from historical behavior to flag risk patterns                       |
-| ✅ **REST API Health Monitoring**    | Tracks uptime, response times, and errors                                   |
-| 📡 **Server Uptime (Heartbeats)**    | Sends heartbeat checks every minute to ensure services are alive            |
-| 🔐 **SSL Certificate Validation**    | Monitors domain certificates and alerts before expiry                       |
-| 🧾 **Invoice Payment Alerts**        | Tracks invoice due dates & sends smart alerts                               |
-| 🐳 **Docker Container Monitoring**   | Observes container health & resource metrics via Docker API                 |
-| 🌙 **Dark Mode UI + Responsive**     | Modern dashboard with charts, filters, and toast alerts                     |
+- **Backend:** Spring Boot, Spring Scheduler
+- **Frontend:** Thymeleaf, Bootstrap, Chart.js
+- **Storage:** PostgreSQL / MySQL
+- **Optional:** Redis for alert/event caching
+- **Containerization:** Docker-ready
 
 ---
 
-## 📷 Dashboard Preview
+## 🧪 Getting Started
 
-> Dark Mode · Real-time Charts · Toast Alerts · Status Cards
-
-<img src="https://your-screenshot-url.com/dashboard.png" alt="Dashboard Preview" width="100%"/>
-
----
-
-## 🚀 Getting Started
+### 1. Clone the repo
 
 ```bash
-# Clone and navigate
-git clone https://github.com/your-username/upguardian.git
+git clone https://github.com/your-org/upguardian.git
 cd upguardian
-
-# Run
-./mvnw spring-boot:run
