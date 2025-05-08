@@ -16,7 +16,7 @@
 - 🧾 **Invoice Payment Alerts**
 - 🐳 **Dockerized Microservices Monitoring**
 - 🤖 **AI-Powered Failure Prediction**
-- ⏱️ **Runs Automatically Every 1 Minute**
+- ⏱️ **Polls Automatically Every defined time**
 
 ---
 
