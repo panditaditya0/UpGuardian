@@ -12,6 +12,12 @@ Whether you're managing APIs, containers, certificates, queues, or invoices — 
 
 ---
 
+![UpGuardian Dashboard](./images/dashboard.png)
+*Main Monitoring Dashboard*
+
+![API Monitoring Dashboard](./images/api_dashboard.png)
+*API Health & Metrics View*
+
 ## ✨ Features
 
 - ✅ **REST API Health & Response Time Tracking**
