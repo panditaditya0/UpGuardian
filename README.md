@@ -1,3 +1,9 @@
+<div align="center" width="100%">
+    <img src="./images/litemode_logo.png" width="128" alt="" />
+</div>
+
+
+
 # 🤖 UpGuardian: AI-First Uptime & API Monitoring
 
 > A real-time **AI-augmented** monitoring system built with Spring Boot to ensure your APIs, services, infrastructure, and billing operations are always **available**, **secure**, and **predictable**.
