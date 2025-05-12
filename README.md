@@ -4,13 +4,13 @@
 
 
 
-# 🤖 UpGuardian: AI-First Uptime & API Monitoring
+# UpGuardian: AI-First Uptime & API Monitoring
 
 > A real-time **AI-augmented** monitoring system built with Spring Boot to ensure your APIs, services, infrastructure, and billing operations are always **available**, **secure**, and **predictable**.
 
 ---
 
-## 🚀 Overview
+## Overview
 
 **UpGuardian** is a comprehensive monitoring and alerting solution designed for modern, distributed architectures. It combines **real-time checks** with **AI-powered predictive insights**, helping you take **action before failure**.
 
