@@ -57,7 +57,6 @@
             </div>
 
             <div class="col-md-10">
-
                 <div class="alert-form">
                     <form id="alertForm">
                         <div class="mb-3">
@@ -140,7 +139,7 @@
                 json.data.forEach(element => {
                     createAlertSidebarHTML += `
                     <li class="list-group-item list-group-item-action">
-                        <a href="/alerts/type1" class="text-decoration-none d-block" style="color: var(--text-color);">`+ element.jobTypeName + `</a>
+                        <a href="/createAlert/`+ element.jobType+`" class="text-decoration-none d-block" style="color: var(--text-color);">`+ element.jobTypeName + `</a>
                     </li>
                     `;
 

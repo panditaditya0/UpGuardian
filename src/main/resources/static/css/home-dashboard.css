@@ -114,3 +114,21 @@
         .dashboard-overview {
             margin-bottom: 30px;
         }
+
+        .spring_boot_icon {
+          width: 1.2rem;
+          height: 1.2rem;
+          background-image: url('/images/springboot_bi_icon.svg');
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center;
+        }
+
+        .docker_icon {
+          width: 1.2rem;
+          height: 1.2rem;
+          background-image: url('/images/docker_bi_icon.svg');
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center;
+        }

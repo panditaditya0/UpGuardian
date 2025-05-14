@@ -33,7 +33,6 @@
     </div>
 
     <div th:insert="fragments/home-dashboard :: dashboard-sections"></div>
-    <div th:insert="fragments/home-dashboard :: dashboard-sections"></div>
     <script>
     populateAlerts();
      populateDashboardCards();
@@ -91,8 +90,10 @@
                               <div class="overview-item">
                              <div class="overview-status">
                                  <span class="`+ inner_element.statusDot + `"></span>
-                                 <span>`+ inner_element.jobTitle + `</span>
-                             </div>
+                                <a href="/analytics-ui/`+inner_element.jobTitle+`" target="_blank" style="text-decoration: none; color: var(--text-color)">
+                                      <span style="cursor: pointer;;">`+inner_element.jobTitle+`</span>
+                                </a>
+                                 </div>
                              <span class="overview-count `+cardBgColor+`" >`+ inner_element.jobStatus + `</span>
                          </div>
                  `;

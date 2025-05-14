@@ -131,6 +131,7 @@ public class ApiMoniterJob implements Job, JobHandler {
         return new DashboardCardDto(
                 this.getJobType().getJobName(),
                 this.getJobType().getJobIcon(),
+                this.getJobType(),
                 allJobStatus);
     }
 
@@ -198,5 +199,10 @@ public class ApiMoniterJob implements Job, JobHandler {
         heartbeatCardItemDto.setDotStatus(status.is2xxSuccessful()? "status-dot up" : "status-dot down");
         heartbeatCardItemDto.setBatchColor(status.is2xxSuccessful()? "overview-count bg-success" : "overview-count bg-danger");
         return heartbeatCardItemDto;
+    }
+
+    @Override
+    public boolean validateNewJobForm(Map<String, String> newJob) {
+        return false;
     }
 }

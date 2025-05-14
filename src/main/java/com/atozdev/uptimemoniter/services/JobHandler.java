@@ -23,4 +23,5 @@ public interface JobHandler {
     Object fetchJobsByStatus(JobStatus status);
     List<AlertCardItemDto> fetchJobsByIncicentLevel(IncidentLevel incedentLevel);
     List<HeartbeatCardItemDto> fetchAllHeartBeats(PageRequest count);
+    boolean validateNewJobForm(Map<String, String> newJob);
 }

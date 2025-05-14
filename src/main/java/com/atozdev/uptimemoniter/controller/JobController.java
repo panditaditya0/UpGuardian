@@ -2,6 +2,7 @@ package com.atozdev.uptimemoniter.controller;
 
 import com.atozdev.uptimemoniter.dtos.CommonJobDto;
 import com.atozdev.uptimemoniter.dtos.ResponseDto;
+import com.atozdev.uptimemoniter.enums.JobType;
 import com.atozdev.uptimemoniter.services.JobService;
 import jakarta.websocket.server.PathParam;
 import org.springframework.http.HttpStatus;
@@ -62,5 +63,14 @@ public class JobController {
     public ResponseEntity<ResponseDto> triggerJob(@PathVariable Long id){
         jobService.triggerJobById(id);
         return new ResponseEntity<>(new ResponseDto(true, "", ""), HttpStatus.ACCEPTED);
+    }
+
+    @PostMapping("/job/validate/{jobType}")
+    public ResponseEntity<ResponseDto> validateNewJob(@RequestBody Map<String, String> job, @PathVariable JobType jobType){
+        boolean isFormValid = jobService.validateNewJob(job, jobType);
+        if (isFormValid){
+            return new ResponseEntity<>(new ResponseDto(true, "", ""), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(new ResponseDto(false, "", "Some of the Metrics are not available"), HttpStatus.BAD_REQUEST);
     }
 }

@@ -59,6 +59,7 @@ public class CertificateMoniterJob implements Job, JobHandler {
         return new DashboardCardDto(
                 this.getJobType().getJobName(),
                 this.getJobType().getJobIcon(),
+                this.getJobType(),
                 allJobStatus);
     }
 
@@ -75,6 +76,11 @@ public class CertificateMoniterJob implements Job, JobHandler {
     @Override
     public List<HeartbeatCardItemDto> fetchAllHeartBeats(PageRequest count) {
         return new ArrayList<HeartbeatCardItemDto>();
+    }
+
+    @Override
+    public boolean validateNewJobForm(Map<String, String> newJob) {
+        return false;
     }
 
     @Override

@@ -64,7 +64,7 @@ public class JobService {
                 commonJobDto.setJobType(job.getJobType());
                 commonJobDto.setJobTitle(job.getJobTitle());
                 commonJobDto.setCronExpression(job.getCronExpression());
-//                this.scheduleAJob(commonJobDto);
+                this.scheduleAJob(commonJobDto);
             } catch (Exception ex) {
             }
         }
@@ -182,5 +182,15 @@ public class JobService {
         } catch (Exception ex) {
             throw new RuntimeException("Error while triggering job " + id + " " + ex.getMessage());
         }
+    }
+
+    public boolean validateNewJob(Map<String, String> newJob, JobType jobType) {
+        JobHandler jobHandler = jobFactory.getHandler(jobType);
+        return jobHandler.validateNewJobForm(newJob);
+    }
+
+    public String fetchPageToBeRendered(String jobTitle) {
+        MainJobs job = mainJobRepo.findByJobTitle(jobTitle);
+        return job.getJobType().getUiPage();
     }
 }
